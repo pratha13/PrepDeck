@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind CSS v4 theme tokens; @theme is processed by Tailwind. */
+@theme {
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-brass: var(--brass);
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+}
+:root {
+  --paper: #e1d4c2; --surface: #eae0d2; --ink: #291c0e; --muted: #6e473b;
+  --line: #a78d78; --accent: #6e473b; --brass: #a78d78;
+}
+.dark {
+  --paper: #2a2328; --surface: #342b31; --ink: #f2e8ec; --muted: #d1c2b8;
+  --line: #66565f; --accent: #cbd3e3; --brass: #d1c2b8;
+}
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 1px var(--accent), 0 0 6px color-mix(in srgb, var(--accent) 30%, transparent); }
+  50% { box-shadow: 0 0 0 1px var(--accent), 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent); }
+}
+.pending {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+  animation: glow 2.6s ease-in-out infinite;
+}
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+main:focus { outline: none; }
