@@ -1,7 +1,14 @@
-const express = require('express');
-const app = express();
-app.use(express.json());
-
-// before: app.use('/users', usersRouter);
-app.use('/api/users', usersRouter);
-app.get('/api/health', (req, res) => res.json({ ok: true }));
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "prepdeskfrontend": {
+      "root": "PrepDesk Frontend",
+      "framework": "vite"
+    },
+    "prepdesk_backend": {
+      "root": "PrepDesk_Backend",
+      "framework": "express"
+    }
+  },
+  "rewrites": []
+}
